@@ -48,7 +48,14 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Test self-hosted runner
-        run: |
-          echo "Deployment job is running on my PC"
-          docker --version
+      - name: Pull latest Docker image
+        run: docker pull ghcr.io/ghnashymsatote/node-cicd-app:latest
+
+      - name: Stop old container
+        run: docker stop node-cicd-app || true
+
+      - name: Remove old container
+        run: docker rm node-cicd-app || true
+
+      - name: Start new container
+        run: docker run -d --name node-cicd-app -p 8080:8080 ghcr.io/ghnashymsatote/node-cicd-app:latest
