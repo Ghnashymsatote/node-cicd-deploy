@@ -5,5 +5,5 @@ app.get("/", (req, res)=>{
     return res.json({msg:"Hello from the server"})
 })
 app.listen(PORT, ()=>{
-    console.log(`Server is running on port ${PORT}`)
+    console.log(`Server is up and running - deployed automatically! on port ${PORT}`)
 })
