@@ -42,3 +42,12 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/ghnashymsatote/node-cicd-app:latest
+    deploy:
+     needs: ci
+     runs-on: self-hosted
+
+     steps:
+       - name: Test self-hosted runner
+         run: |
+          echo "Deployment job is running on my PC"
+          docker --version
